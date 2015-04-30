@@ -1,6 +1,13 @@
 package com.amulyakhare.textdrawable;
 
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.graphics.drawable.shapes.RectShape;
@@ -10,7 +17,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
  * @author amulya
  * @datetime 14 Oct 2014, 3:53 PM
  */
-public class TextDrawable extends ShapeDrawable {
+public class TextDrawableMiddle extends ShapeDrawable {
 
     private final Paint textPaint;
     private final Paint borderPaint;
@@ -25,7 +32,7 @@ public class TextDrawable extends ShapeDrawable {
     private final float radius;
     private final int borderThickness;
 
-    private TextDrawable(Builder builder) {
+    private TextDrawableMiddle(Builder builder) {
         super(builder.shape);
 
         // shape properties
@@ -94,12 +101,13 @@ public class TextDrawable extends ShapeDrawable {
 //        int fontSize2 = this.fontSize < 0 ? (Math.min(width, height) *1/4) : this.fontSize;
 //use decimal to fraction converters
 
-        //int fontSize = this.fontSize < 0 ? (Math.min(width, height) *1/4) : this.fontSize;//small size
+        //int fontSize = this.fontSize < 0 ? (Math.min(width, height) *1/4) : this.fontSize;
         int fontSize = this.fontSize < 0 ? (Math.min(width, height) * 7/20) : this.fontSize;
         textPaint.setTextSize(fontSize);
 
-        //height / 4 y axis hight 25%
-        canvas.drawText(text1, width / 2, height / 4 - ((textPaint.descent() + textPaint.ascent()) / 2), textPaint);
+
+        //height / 4 y axis hight  23/50 = 0.46
+        canvas.drawText(text1, width / 2, height *23/50 - ((textPaint.descent() + textPaint.ascent()) / 2), textPaint);
 
 
 
@@ -108,8 +116,9 @@ public class TextDrawable extends ShapeDrawable {
         textPaint.setTextSize(fontSize2);
         //textPaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
         //canvas.drawText(text2, width / 2, height *3/4 - ((textPaint.descent() + textPaint.ascent()) / 2), textPaint);
-        //height / 4 y axis hight 50%
-        canvas.drawText(text2, width / 2, height *1/2 - ((textPaint.descent() + textPaint.ascent()) / 2), textPaint);
+
+        //height / 4 y axis hight 75%
+        canvas.drawText(text2, width / 2, height *3/4 - ((textPaint.descent() + textPaint.ascent()) / 2), textPaint);
 
 
         canvas.restoreToCount(count);
@@ -297,54 +306,54 @@ public class TextDrawable extends ShapeDrawable {
         }
 
         @Override
-        public TextDrawable buildRect(String text, int color) {
+        public TextDrawableMiddle buildRect(String text, int color) {
             rect();
             return build(text, color);
         }
 
         @Override
-        public TextDrawable buildRoundRect(String text, int color, int radius) {
+        public TextDrawableMiddle buildRoundRect(String text, int color, int radius) {
             roundRect(radius);
             return build(text, color);
         }
 
         @Override
-        public TextDrawable buildRound(String text, int color) {
+        public TextDrawableMiddle buildRound(String text, int color) {
             round();
             return build(text, color);
         }
 
         @Override
-        public TextDrawable build(String text, int color) {
+        public TextDrawableMiddle build(String text, int color) {
             this.color = color;
             this.text1 = text;
-            return new TextDrawable(this);
+            return new TextDrawableMiddle(this);
         }
 //=======================================
         @Override
-        public TextDrawable buildRect(String text1,String text2, int color) {
+        public TextDrawableMiddle buildRect(String text1,String text2, int color) {
             rect();
             return build(text1,text2, color);
         }
 
         @Override
-        public TextDrawable buildRoundRect(String text1,String text2, int color, int radius) {
+        public TextDrawableMiddle buildRoundRect(String text1,String text2, int color, int radius) {
             roundRect(radius);
             return build(text1,text2,  color);
         }
 
         @Override
-        public TextDrawable buildRound(String text1,String text2, int color) {
+        public TextDrawableMiddle buildRound(String text1,String text2, int color) {
             round();
             return build(text1,text2, color);
         }
 
         @Override
-        public TextDrawable build(String text1,String text2 ,int color) {
+        public TextDrawableMiddle build(String text1,String text2 ,int color) {
             this.color = color;
             this.text1 = text1;
             this.text2 = text2;
-            return new TextDrawable(this);
+            return new TextDrawableMiddle(this);
         }
     }
 
@@ -370,8 +379,8 @@ public class TextDrawable extends ShapeDrawable {
 
     public static interface IBuilder {
 
-        public TextDrawable build(String text1,String text2, int color);
-        public TextDrawable build(String text,int color);
+        public TextDrawableMiddle build(String text1, String text2, int color);
+        public TextDrawableMiddle build(String text, int color);
     }
 
     public static interface IShapeBuilder {
@@ -384,16 +393,16 @@ public class TextDrawable extends ShapeDrawable {
 
         public IBuilder roundRect(int radius);
 
-        public TextDrawable buildRect(String text, int color);
+        public TextDrawableMiddle buildRect(String text, int color);
 
-        public TextDrawable buildRoundRect(String text, int color, int radius);
+        public TextDrawableMiddle buildRoundRect(String text, int color, int radius);
 
-        public TextDrawable buildRound(String text, int color);
+        public TextDrawableMiddle buildRound(String text, int color);
         //=============
 
-        public TextDrawable buildRect(String text1,String text2, int color);
-        public TextDrawable buildRoundRect(String text1,String text2, int color, int radius);
+        public TextDrawableMiddle buildRect(String text1, String text2, int color);
+        public TextDrawableMiddle buildRoundRect(String text1, String text2, int color, int radius);
 
-        public TextDrawable buildRound(String text1,String text2, int color);
+        public TextDrawableMiddle buildRound(String text1, String text2, int color);
     }
 }

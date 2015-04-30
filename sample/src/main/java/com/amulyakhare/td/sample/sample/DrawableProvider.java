@@ -11,6 +11,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.util.TypedValue;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.amulyakhare.textdrawable.TextDrawableMiddle;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
 
 /**
@@ -38,14 +39,14 @@ public class DrawableProvider {
         mGenerator = ColorGenerator.DEFAULT;
         mContext = context;
     }
-
-    public TextDrawable getRect(String text) {
-        return TextDrawable.builder()
+//test
+    public TextDrawableMiddle getRect(String text) {
+        return TextDrawableMiddle.builder()
                 .buildRect(text, mGenerator.getColor(text));
     }
-
-    public TextDrawable getRect(String text1,String text2) {
-        return TextDrawable.builder()
+//test
+    public TextDrawableMiddle getRect(String text1,String text2) {
+        return TextDrawableMiddle.builder()
                 .buildRect(text1,text2, mGenerator.getColor(text1));
     }
 
