@@ -46,7 +46,7 @@ public class DataSource {
         switch (type) {
             case DrawableProvider.SAMPLE_RECT:
                 label = "Rectangle with Text";
-                drawable = mProvider.getRect("Today","2:55Pm");
+                drawable = mProvider.getRect("MAY 15","2:55Pm");
                 break;
             case DrawableProvider.SAMPLE_ROUND_RECT:
                 label = "Round Corner with Text";

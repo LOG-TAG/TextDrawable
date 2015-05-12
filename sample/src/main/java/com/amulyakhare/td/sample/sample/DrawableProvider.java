@@ -45,10 +45,17 @@ public class DrawableProvider {
                 .buildRect(text, mGenerator.getColor(text));
     }
 //test
-    public TextDrawableMiddle getRect(String text1,String text2) {
-        return TextDrawableMiddle.builder()
+  /*  public TextDrawable getRect(String text1,String text2) {
+        return TextDrawable.builder()
                 .buildRect(text1,text2, mGenerator.getColor(text1));
+    }*/
+
+    public TextDrawable getRect(String text1,String text2) {
+        return TextDrawable.builder().beginConfig().fontSize(toPx(15))
+                .endConfig()
+                .buildRect(text1, text2, mGenerator.getColor(text1));
     }
+
 
     public TextDrawable getRound(String text) {
         return TextDrawable.builder()
